@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
     const toggleSidebar = () => {
@@ -69,12 +71,13 @@ const Dashboard = () => {
                 <div className="col-xl-6">
                   <div className="row">
                     <div className="col-md-6 col-6">
-                      <div className="card">
+                      <div className="card" >
                         <div className="card-header mx-4 p-3 text-center">
                           <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                            <span className="material-symbols-outlined" style={{ color: 'white', fontSize: '60px', marginTop: '20px' }}>
-                              fact_check
-                            </span>
+                          <span
+                            style={{paddingTop:'10px'}}>
+                            &#128203;
+                          </span>
                           </div>
                         </div>
                         <div className="card-body pt-0 p-3 text-center" onClick={toDM}>
@@ -85,15 +88,13 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="col-md-6 col-6">
-                      <div className="card">
+                      <div className="card" >
                         <div className="card-header mx-4 p-3 text-center">
                           <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                            <span
-                              className="material-symbols-outlined"
-                              style={{ color: 'white', fontSize: '60px', marginTop: '20px' }}
-                            >
-                              pending
-                            </span>
+                          <span
+                            style={{paddingTop:'10px'}}>
+                            &#128195;
+                          </span>
                           </div>
                         </div>
                         <div className="card-body pt-0 p-3 text-center" onClick={toDM}>
