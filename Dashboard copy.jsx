@@ -1,77 +1,143 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from "./Sidebar_shison";
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+    const navigate = useNavigate();
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  };
+    const toggleSidebar = () => {
+        setIsSidebarVisible(!isSidebarVisible);
+    };
 
-  const toVerify = () => {
-    window.location.href = "/verify";
-  };
+    const toUpload = () => {
+        window.location.href = "/upload";
+    };
 
-  const toView = () => {
-    window.location.href = "/view";
-  };
+    const toVerify = () => {
+        window.location.href = "/verify";
+    };
 
+    const toView = () => {
+        window.location.href = "/view";
+    };
 
-  const toDM = () => {
-    window.location.href = "/DocumentManagement";
-  };
- 
-  var [recentCertificates] = useState([
-    { owner: "Wong Tai Man", userAddress: "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2", state: "Active", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Chan Tai Man", userAddress: "", state: "Inactive", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Wong Tai Man", userAddress: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", state: "Active", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Chan Tai Man", userAddress: "", state: "Inactive", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Wong Tai Man", userAddress: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e", state: "Active", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Wong Tai Man", userAddress: "0x1281B0Fa3b844Bc454e4438f44e12828e676c326", state: "Active", deployTime: "2024-01-01", certificateName: "Graduation Certificate" },
-    { owner: "Wong Tai Man", userAddress: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326", state: "Active", deployTime: "2024-01-01", certificateName: "Graduation Certificate" }
-  ]);
-  recentCertificates = recentCertificates.slice(0, 5);
-
-  var [recentVer] = useState([
-    { owner: "Wong Tai Man", userAddress: "hislnmdns342hoehip", orgName:"UCLA",disableTime:"09:00:23 5-3-2025" ,certificateName: "Graduation Certificate" },
-    { owner: "Chan Tai Man", userAddress: "hislnmdns342hoehip", orgName:"HKCU",disableTime:"09:00:23 5-3-2025" ,certificateName: "Graduation Certificate"  },
-    { owner: "Wong Tai Man", userAddress: "hislnmdns86ihoehip", orgName: "NYU",disableTime:"09:00:23 5-3-2025" ,certificateName: "Graduation Certificate" },
-  ])
-
-  recentVer = recentVer.slice(0, 3);
-
-  var [search] = useState([
-    { owner: "Wong Tai Man", userAddress: "hislnmdns342hoehip",deplyTime:"09:00:23 5-3-2025" ,certificateName: "Graduation Certificate" },
+    const toSettings = () => {
+        window.location.href = "/settings";
+    };
     
-  ]);
+    const toDM = () => {
+        window.location.href = "/DocumentManagement";
+    };
 
-  const cert ={owner:"HKMU",userAddress:"0x742d35Cc6634C0532925a3b844Bc454e4438f44e"}
+    const toDashboard = () => {
+        window.location.href = "/";
+    };
 
-  const Usercard = ({ user }) => {
-    return (
-      <div className="card-body position-relative z-index-1 p-3">
-        <h6 id="address" className="text-white mt-4 mb-5 pb-2">
-          {user.userAddress}
-        </h6>
-        <div className="d-flex">
-          <div className="d-flex">
-            <div className="me-4">
-              <p className="text-white text-sm opacity-8 mb-0">User Name</p>
-              <h6 className="text-white mb-0">{user.owner}</h6>
-            </div>
+    const Usercard=({user})=>{
+      return(
+          <div className="card-body position-relative z-index-1 p-3">
+              <h6 id="address" className="text-white mt-4 mb-5 pb-2">
+                  {user.address_card}
+              </h6>
+              <div className="d-flex">
+                  <div className="d-flex">
+                      <div className="me-4">
+                                <p className="text-white text-sm opacity-8 mb-0">User Name</p>
+                                <h6 className="text-white mb-0">{user.username_card}</h6>
+                      </div>
+                      <div>
+                                <p className="text-white text-sm opacity-8 mb-0">Email address</p>
+                                <h6 className="text-white mb-0">{user.email_card}</h6>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-    );
-  };
+      );
+    };
 
-  const data = { activenum: 142, inactivenum: 20 };
+    const data={activenum:142,inactivenum:20};
 
-  return (
+    const cert={ 
+      address_card:'hjfksh8eyfhwihenu',
+      username_card:'Alice',
+      email_card:'alice@example.com' 
+    };
+    const [users, setUsers] = useState([
+      { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
+      { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com' },
+    ]);
+    
+    <RecentCert name_recentCert="Chan Tai Man" recentEmail="chan@gmail.com" recentDate="2/1/2025" recentStatus="Active"/>
+    <RecentCert name_recentCert="Wong Tai Man" recentEmail="taiman@gmail.com" recentDate="1/1/2025" recentStatus="Inactive"/>
+    <RecentCert name_recentCert="Mandy Smith" recentEmail="mandy@gmail.com" recentDate="1/1/2025" recentStatus="Active"/>
+    <RecentCert name_recentCert="Chan Tai Man" recentEmail="chan@gmail.com" recentDate="1/1/2025" recentStatus="Active"/>
+                    
+                    
+    const RecentCert=(cert)=>{
+      return(
+        <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div className="d-flex flex-column">
+             <h6 className="mb-1 text-dark font-weight-bold text-sm">{cert.name_recentCert}</h6>
+             <span className="text-xs">{cert.recentEmail}</span>
+          </div>
+          <div className="d-flex align-items-center text-sm">
+            {cert.recentStatus}
+            <h6 className="text-dark text-sm mb-0 px-0 ms-4">{cert.recentDate}</h6>
+          </div>
+        </li>
+      );
+    };
+
+    const RecentVer=({cert})=>{
+      return(
+        <li className="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                      <div className="d-flex flex-column">
+                        <h6 className="mb-3 text-sm">{cert.name_verify}</h6>
+                        <div style={{ justifyContent: 'space-between' }}>
+                          <div>
+                            <span className="mb-2 text-xs">
+                              Expire in: <span className="text-dark ms-sm-2 font-weight-bold">{cert.expire}hours</span>
+                            </span>
+                          </div>
+                          <div>
+                            <span className="mb-2 text-xs">
+                              Certified By: <span className="text-dark ms-sm-2 font-weight-bold">{cert.certifyBy}</span>
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-xs">
+                              Description: <span className="text-dark ms-sm-2 font-weight-bold">{cert.certName}</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="ms-auto text-end">
+                        <button className="btn btn-link text-dark px-3 mb-0" onClick={toView}>Details</button>
+                      </div>
+                    </li>
+      );
+    }
+    const Search =({cert})=>{
+      return(
+        <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                      <div className="d-flex align-items-center">
+                        <div className="d-flex flex-column">
+                          <h6 className="mb-1 text-dark text-sm">{cert.search_name}</h6>
+                          <span className="text-xs">{cert.search_address}</span>
+                        </div>
+                      </div>
+                      <div id="date">
+                        <p>{cert.search_date}</p>
+                      </div>
+                      <div className="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
+                        <p onClick={toView}>Details</p>
+                      </div>
+                    </li>
+      );
+    }
+
+    return (
     <div className="g-sidenav-show bg-gray-100">
-      <Sidebar />
-      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg" style={{ marginLeft: '50px' }}>
+      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <div className="container-fluid py-2">
           <div className="row">
             <div className="col-lg-8">
@@ -80,23 +146,23 @@ const Dashboard = () => {
                   <div className="card bg-transparent shadow-xl">
                     <div className="overflow-hidden position-relative border-radius-xl">
                       <span className="mask bg-gradient-dark opacity-10"></span>
-                      <Usercard user={cert} />
+                      <Usercard user={cert}/>
                     </div>
                   </div>
                 </div>
                 <div className="col-xl-6">
                   <div className="row">
                     <div className="col-md-6 col-6">
-                      <div className="card" onClick={toDM}>
+                      <div className="card" >
                         <div className="card-header mx-4 p-3 text-center">
                           <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                            <span
-                              style={{ paddingTop: '10px' }}>
-                              &#128203;
-                            </span>
+                          <span
+                            style={{paddingTop:'10px'}}>
+                            &#128203;
+                          </span>
                           </div>
                         </div>
-                        <div className="card-body pt-0 p-3 text-center" >
+                        <div className="card-body pt-0 p-3 text-center" onClick={toDM}>
                           <h6 className="text-center mb-0">Active</h6>
                           <hr className="horizontal dark my-3" />
                           <h5 className="mb-0 color-black">{data.activenum}</h5>
@@ -104,16 +170,16 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="col-md-6 col-6">
-                      <div className="card" onClick={toDM}>
+                      <div className="card" >
                         <div className="card-header mx-4 p-3 text-center">
                           <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                            <span
-                              style={{ paddingTop: '10px' }}>
-                              &#128195;
-                            </span>
+                          <span
+                            style={{paddingTop:'10px'}}>
+                            &#128195;
+                          </span>
                           </div>
                         </div>
-                        <div className="card-body pt-0 p-3 text-center" >
+                        <div className="card-body pt-0 p-3 text-center" onClick={toDM}>
                           <h6 className="text-center mb-0">Inactive</h6>
                           <hr className="horizontal dark my-3" />
                           <h5 className="mb-0 color-black">{data.inactivenum}</h5>
@@ -162,19 +228,11 @@ const Dashboard = () => {
                 </div>
                 <div className="card-body p-3 pb-0">
                   <ul className="list-group">
-                    {/*Recent Certification*/}
-                    {recentCertificates.map(cert => (
-                      <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div className="d-flex flex-column" style={{maxWidth:'50%'}}>
-                          <h6 className="mb-1 text-dark font-weight-bold text-sm">{cert.owner}</h6>
-                          <span className="text-xs">{cert.userAddress}</span>
-                        </div>
-                        <div className="d-flex align-items-center text-sm" >
-                          {cert.state}
-                          <h6 className="text-dark text-sm mb-0 px-0 ms-4">{cert.deployTime}</h6>
-                        </div>
-                      </li>
-                    ))}
+                    <RecentCert cert={}/>
+                    <RecentCert name_recentCert="Chan Tai Man" recentEmail="chan@gmail.com" recentDate="2/1/2025" recentStatus="Active"/>
+                    <RecentCert name_recentCert="Wong Tai Man" recentEmail="taiman@gmail.com" recentDate="1/1/2025" recentStatus="Inactive"/>
+                    <RecentCert name_recentCert="Mandy Smith" recentEmail="mandy@gmail.com" recentDate="1/1/2025" recentStatus="Active"/>
+                    <RecentCert name_recentCert="Chan Tai Man" recentEmail="chan@gmail.com" recentDate="1/1/2025" recentStatus="Active"/>
                     {/* Repeat similar list items for other entries */}
                   </ul>
                 </div>
@@ -189,34 +247,10 @@ const Dashboard = () => {
                 </div>
                 <div className="card-body pt-4 p-3">
                   <ul className="list-group">
-                    {/*Recent Verfication*/}
-                    {recentVer.map(cert => (
-                      <li className="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                      <div className="d-flex flex-column">
-                        <h6 className="mb-3 text-sm">{cert.owner}</h6>
-                        <div style={{ justifyContent: 'space-between' }}>
-                          <div>
-                            <span className="mb-2 text-xs">
-                              Expire Time: <span className="text-dark ms-sm-2 font-weight-bold">{cert.disableTime}</span>
-                            </span>
-                          </div>
-                          <div>
-                            <span className="mb-2 text-xs">
-                              Certified By: <span className="text-dark ms-sm-2 font-weight-bold">{cert.orgName}</span>
-                            </span>
-                          </div>
-                          <div>
-                            <span className="text-xs">
-                              Description: <span className="text-dark ms-sm-2 font-weight-bold">{cert.certificateName}</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="ms-auto text-end">
-                        <button className="btn btn-link text-dark px-3 mb-0" onClick={toView}>Details</button>
-                      </div>
-                    </li>
-                    ))}
+                    <RecentVer name_verify= "Chan Tai Man" expire="8" certifyBy="HKMU" certName="Batchelor of Science in Biology"/>
+                    <RecentVer name_verify= "Chan Lok Hin" expire="12" certifyBy="HKMU" certName="Batchelor of Arts in Creative Media"/>
+                    <RecentVer name_verify= "Amenda Smith" expire="24" certifyBy="UCLA" certName="Batchelor of Arts in English"/>
+                    
                     {/* Repeat similar list items for other entries */}
                   </ul>
                 </div>
@@ -241,26 +275,8 @@ const Dashboard = () => {
                 </div>
                 <div className="card-body pt-4 p-3">
                   <ul className="list-group">
-                    {/* SEARCH */}
-                    {search.map(cert => (
-                      <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                      <div className="d-flex align-items-center">
-                        <div className="d-flex flex-column">
-                          <h6 className="mb-1 text-dark text-sm">{cert.owner}</h6>
-                          <span className="text-xs">{cert.userAddress}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <h6 className="mb-1 text-dark text-sm">{cert.certificateName}</h6>
-                      </div>
-                      <div id="date">
-                        <p>{cert.deployTime}</p>
-                      </div>
-                      <div className="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                        <p onClick={toView}>Details</p>
-                      </div>
-                    </li>
-                    ))}
+                    < Search search_address="1HB5XMLmzFVj8ALj6mfBsbijd98fj4f9s" search_name="Wong Tai Man" search_date="1/1/2025" />
+                    {/* Repeat similar list items for other entries */}
                   </ul>
                 </div>
               </div>
