@@ -36,7 +36,7 @@ const DocumentManagement = () => {
     const toggleSidebar = () => {
         setIsSidebarVisible(!isSidebarVisible);
     };
-
+    const toCertify = () => { window.location.href = "/certify";};
     const toUpload = () => { window.location.href = "/upload"; };
     const toVerify = () => { window.location.href = "/verify"; };
     const toView = () => { window.location.href = "/view"; };
@@ -69,8 +69,9 @@ const DocumentManagement = () => {
                                 <td>{cert.status}</td>
                                 <td>{cert.uploadDate}</td>
                                 <td>
-                                    <button className="button blue-button" onclick={toView}>View</button>
-                                    <button className="button gray-button" onclick={toUpload}>Update</button>
+                                    <button className="button blue-button" onClick={toView}>View</button>
+                                    <button className="button gray-button" onClick={toUpload}>Update</button>
+                                    <button className="button gray-button" onClick={toCertify}>Certify</button>
                                     <button className="button red-button" onClick={() => deleteCertificate(cert.id)}>Delete</button>
                                 </td>
                             </tr>
